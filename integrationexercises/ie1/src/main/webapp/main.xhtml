@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: M999RHV
+  Date: 08/11/2019
+  Time: 11:19
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Main Page</title>
+</h:head>
+
+<h:body>
+    <ui:composition template="template.xhtml">
+        <ui:define name="content">
+            <h:form>
+
+                <p:outputLabel value="Search Criteria:"/>
+
+                <p:separator/>
+
+                <p:panelGrid columns="2" styleClass="ui-noborder">
+
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Minimum Value:"/>
+                        <p:inputText id="minVal" label="Minimum Value"/>
+
+                        <p:outputLabel value="# Of Products:"/>
+                        <p:inputText id="nrOfProd" label="Number of Products"/>
+
+                        <p:outputLabel value="Product Name:"/>
+                        <p:inputText id="prodName" label="Product Name"/>
+                    </p:panelGrid>
+
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Maximum Value:"/>
+                        <p:inputText id="maxVal" label="Maximum Value"/>
+
+                        <p:outputLabel value="Delivered:"/>
+                        <p:inputText id="delivered" label="Delivered"/>
+
+                        <p:outputLabel value="Email Address:"/>
+                        <p:inputText id="emailAddr" label="Email Address"/>
+                    </p:panelGrid>
+
+                    <p:row></p:row>
+
+                    <p:row>
+                        <p:commandButton value="Clear"/>
+                        <p:commandButton value="Search"/>
+                    </p:row>
+                </p:panelGrid>
+
+                <p:outputLabel value="Found Results:"/>
+                <p:separator/>
+
+                <p:dataTable id="foundRes" var="order" value="">
+                    <p:column headerText="Order ID">
+                        <h:outputText value="OID-123456"/>
+                    </p:column>
+                    <p:column headerText="Customer ID">
+                        <h:outputText value="CID-876512"/>
+                    </p:column>
+                    <p:column headerText="# of Products">
+                        <h:outputText value="5"/>
+                    </p:column>
+                    <p:column headerText="Delivered">
+                        <h:outputText value="Yes"/>
+                    </p:column>
+                    <p:column headerText="Delivery Days">
+                        <h:outputText value="7"/>
+                    </p:column>
+                    <p:column headerText="Total Price">
+                        <h:outputText value="$500"/>
+                    </p:column>
+                    <p:column style="width:32px;text-align: center">
+                        <p:commandButton icon="pi pi-search" title="Detail">
+                            <f:setPropertyActionListener value="" target=""/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+
+</html>
