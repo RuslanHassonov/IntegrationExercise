@@ -25,14 +25,14 @@
             <h:form>
                 <h:panelGrid columns="2" cellpadding="5" style="text-align: center; border-style: solid; border-width: 1px; margin: auto; padding: 10px">
                     <p:outputLabel value="Username:"/>
-                    <p:inputText id="username" required="true" label="Username" value="#{userBean.username}"/>
+                    <p:inputText id="username" required="true" label="Username" value="#{loginBean.username}"/>
 
                     <p:outputLabel value="Password:"/>
-                    <p:password id="password" required="true" label="Password" value="#{userBean.password}"/>
+                    <p:password id="password" required="true" label="Password" value="#{loginBean.password}"/>
 
                     <p:spacer height="10"/>
 
-                    <p:commandButton value="Login" action="#{userBean.validateCredentials}"/>
+                    <p:commandButton value="Login" action="#{loginBean.validateLogin}"/>
                 </h:panelGrid>
             </h:form>
         </ui:define>

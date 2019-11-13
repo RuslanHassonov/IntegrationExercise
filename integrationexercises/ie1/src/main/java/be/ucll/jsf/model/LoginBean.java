@@ -7,7 +7,7 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
-public class UserBean {
+public class LoginBean {
 
     private String username;
     private String password;
@@ -28,11 +28,13 @@ public class UserBean {
         this.password = password;
     }
 
-    public void validateCredentials(){
-        if (username == "test" && password == "test"){
-            // continue
+    public String validateLogin() {
+        String navResult = "";
+        if (this.username.equalsIgnoreCase("test") && this.password.equalsIgnoreCase("test")) {
+            navResult = "success";
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Incorrect username and/or password."));
+            navResult = "failure";
         }
+        return navResult;
     }
 }
