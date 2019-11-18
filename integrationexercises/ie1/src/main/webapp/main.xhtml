@@ -30,33 +30,46 @@
 
                 <p:panelGrid columns="2" styleClass="ui-noborder">
 
-                    <p:panelGrid columns="2">
+                    <p:panelGrid id="gridLeft" columns="3">
                         <p:outputLabel value="Minimum Value:"/>
-                        <p:inputText id="minVal" label="Minimum Value"/>
+                        <p:inputText id="minVal" label="Minimum Value" value="#{orderSearchCriteria.minAmount}">
+                            <p:ajax update="gridLeft" event="blur"/>
+                        </p:inputText>
+                        <p:message id="msgMinVal" for="minVal" display="text"/>
 
                         <p:outputLabel value="# Of Products:"/>
-                        <p:inputText id="nrOfProd" label="Number of Products"/>
+                        <p:inputText id="nrOfProd" label="Number of Products" value="#{orderSearchCriteria.numberOfProducts}"/>
+                        <p:message id="msgNrOfProd" for="nrOfProd" display="text"/>
 
                         <p:outputLabel value="Product Name:"/>
-                        <p:inputText id="prodName" label="Product Name"/>
+                        <p:inputText id="prodName" label="Product Name" value="#{orderSearchCriteria.productName}"/>
+                        <p:message id="msgProdName" for="prodName" display="text"/>
                     </p:panelGrid>
 
-                    <p:panelGrid columns="2">
+                    <p:panelGrid id="gridRight" columns="3">
                         <p:outputLabel value="Maximum Value:"/>
-                        <p:inputText id="maxVal" label="Maximum Value"/>
+                        <p:inputText id="maxVal" label="Maximum Value" value="#{orderSearchCriteria.maxAmount}">
+                            <p:ajax update="gridRight" event="blur"/>
+                        </p:inputText>
+                        <p:message id="msgMaxVal" for="maxVal" display="text"/>
 
                         <p:outputLabel value="Delivered:"/>
-                        <p:inputText id="delivered" label="Delivered"/>
+                        <p:inputText id="delivered" label="Delivered" value="#{orderSearchCriteria.delivered}"/>
+                        <p:message id="msgDelivered" for="delivered" display="text"/>
 
                         <p:outputLabel value="Email Address:"/>
-                        <p:inputText id="emailAddr" label="Email Address"/>
+                        <p:inputText id="emailAddr" label="Email Address" value="#{orderSearchCriteria.email}"/>
+                        <p:message id="msgEmailAddr" for="emailAddr" display="text"/>
                     </p:panelGrid>
 
                     <p:row></p:row>
 
                     <p:row>
-                        <p:commandButton value="Clear"/>
-                        <p:commandButton value="Search"/>
+                        <p:commandButton value="Clear" actionListener="#{orderSearchCriteria.clear}">
+                            <f:ajax render="minVal nrOfProd prodName maxVal delivered emaulAddr msgMinVal
+                                            msgNrOfProd msgProdName msgMaxVal msgDelivered msgEmailAddr"/>
+                        </p:commandButton>
+                        <p:commandButton value="Search" action="#{orderServiceImpl.searchOrders}"/>
                     </p:row>
                 </p:panelGrid>
 
@@ -88,6 +101,10 @@
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
+
+                <br/>
+                <p:spacer height="10"/>
+                <p:commandButton value="Logout" action="#{loginBean.validateLogin}"/>
 
             </h:form>
         </ui:define>

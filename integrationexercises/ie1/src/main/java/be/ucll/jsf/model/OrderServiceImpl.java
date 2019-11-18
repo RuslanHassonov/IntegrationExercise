@@ -9,6 +9,11 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean
+@SessionScoped
 public class OrderServiceImpl implements OrderService, Serializable {
 
 	private static final String FIXED_CUSTOMER = "john";

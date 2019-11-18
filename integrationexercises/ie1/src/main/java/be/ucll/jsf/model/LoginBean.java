@@ -32,8 +32,10 @@ public class LoginBean {
         String navResult = "";
         if (this.username.equalsIgnoreCase("test") && this.password.equalsIgnoreCase("test")) {
             navResult = "success";
+            username = "";
         } else {
             navResult = "failure";
+            password = "";
         }
         return navResult;
     }

@@ -1,8 +1,12 @@
 package be.ucll.jsf.model;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+@ManagedBean
+@SessionScoped
 public class OrderSearchCriteria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,6 +33,14 @@ public class OrderSearchCriteria implements Serializable {
 			inRange = false;
 		}
 		return inRange;
+	}
+
+	public void clear(){
+		minAmount = null;
+		maxAmount = null;
+		numberOfProducts = null;
+		delivered = null;
+		productName = null;
 	}
 
 	public BigDecimal getMinAmount() {
