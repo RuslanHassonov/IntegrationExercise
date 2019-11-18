@@ -1,10 +1,10 @@
 package be.ucll.introduction.tests;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * See the exercises PDF for instructions

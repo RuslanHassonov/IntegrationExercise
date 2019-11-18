@@ -1,11 +1,11 @@
 package be.ucll.introduction.tests;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Test
 public class Exercise4 {

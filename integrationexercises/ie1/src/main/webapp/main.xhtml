@@ -28,7 +28,7 @@
 
                 <p:separator/>
 
-                <p:panelGrid columns="2" styleClass="ui-noborder">
+                <p:panelGrid id="gridParent" columns="2" styleClass="ui-noborder">
 
                     <p:panelGrid id="gridLeft" columns="3">
                         <p:outputLabel value="Minimum Value:"/>
@@ -54,11 +54,14 @@
                         <p:message id="msgMaxVal" for="maxVal" display="text"/>
 
                         <p:outputLabel value="Delivered:"/>
-                        <p:inputText id="delivered" label="Delivered" value="#{orderSearchCriteria.delivered}"/>
+                        <p:selectBooleanCheckbox id="delivered" label="Delivered" value="#{orderSearchCriteria.delivered}"/>
                         <p:message id="msgDelivered" for="delivered" display="text"/>
 
                         <p:outputLabel value="Email Address:"/>
-                        <p:inputText id="emailAddr" label="Email Address" value="#{orderSearchCriteria.email}"/>
+                        <p:inputText id="emailAddr" label="Email Address" value="#{orderSearchCriteria.email}" validatorMessage="Provided email is not correct.">
+                            <f:validateRegex pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"/>
+                            <p:ajax update="gridRight" event="blur"/>
+                        </p:inputText>
                         <p:message id="msgEmailAddr" for="emailAddr" display="text"/>
                     </p:panelGrid>
 
@@ -66,34 +69,35 @@
 
                     <p:row>
                         <p:commandButton value="Clear" actionListener="#{orderSearchCriteria.clear}">
-                            <f:ajax render="minVal nrOfProd prodName maxVal delivered emaulAddr msgMinVal
-                                            msgNrOfProd msgProdName msgMaxVal msgDelivered msgEmailAddr"/>
+                            <!--<f:ajax render="minVal nrOfProd prodName maxVal delivered emaulAddr msgMinVal
+                                            msgNrOfProd msgProdName msgMaxVal msgDelivered msgEmailAddr"/>-->
+                            <p:ajax update="gridParent" resetValues="true"/>
                         </p:commandButton>
-                        <p:commandButton value="Search" action="#{orderServiceImpl.searchOrders}"/>
+                        <p:commandButton value="Search"/>
                     </p:row>
                 </p:panelGrid>
 
                 <p:outputLabel value="Found Results:"/>
                 <p:separator/>
 
-                <p:dataTable id="foundRes" var="order" value="">
+                <p:dataTable id="foundRes" var="order" value="#{orderServiceImpl.searchOrders(orderSearchCriteria)}">
                     <p:column headerText="Order ID">
-                        <h:outputText value="OID-123456"/>
+                        <h:outputText value="#{order.orderId}"/>
                     </p:column>
                     <p:column headerText="Customer ID">
-                        <h:outputText value="CID-876512"/>
+                        <h:outputText value="#{order.customerId}"/>
                     </p:column>
                     <p:column headerText="# of Products">
-                        <h:outputText value="5"/>
+                        <h:outputText value="#{order.products}"/>
                     </p:column>
                     <p:column headerText="Delivered">
-                        <h:outputText value="Yes"/>
+                        <h:outputText value="#{order.delivered}"/>
                     </p:column>
                     <p:column headerText="Delivery Days">
-                        <h:outputText value="7"/>
+                        <h:outputText value="#{order.deliveryDays}"/>
                     </p:column>
                     <p:column headerText="Total Price">
-                        <h:outputText value="$500"/>
+                        <h:outputText value="#{order.totalOrderPrice}"/>
                     </p:column>
                     <p:column style="width:32px;text-align: center">
                         <p:commandButton icon="pi pi-search" title="Detail">

@@ -1,11 +1,11 @@
 package be.ucll.introduction.tests;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import be.ucll.introduction.generics.Super;
 import be.ucll.introduction.generics.Base1;
 import be.ucll.introduction.generics.Base2;
+import be.ucll.introduction.generics.Super;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class Exercise3 {
 

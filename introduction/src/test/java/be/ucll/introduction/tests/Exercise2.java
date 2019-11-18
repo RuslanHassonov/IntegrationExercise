@@ -1,13 +1,12 @@
 package be.ucll.introduction.tests;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import be.ucll.introduction.annotations.ImASecuredClass;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.internal.PackageUtils;
 
-import be.ucll.introduction.annotations.ImASecuredClass;
+import java.util.ArrayList;
+import java.util.List;
 
 @Test
 public class Exercise2 {

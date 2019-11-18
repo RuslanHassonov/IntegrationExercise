@@ -1,9 +1,9 @@
 package be.ucll.introduction.tests;
 
-import java.util.concurrent.Callable;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.Callable;
 
 @Test
 public class Exercise5 {

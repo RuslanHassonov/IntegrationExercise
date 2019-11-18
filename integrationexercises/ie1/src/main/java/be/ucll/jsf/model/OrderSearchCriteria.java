@@ -16,7 +16,6 @@ public class OrderSearchCriteria implements Serializable {
 	private Integer numberOfProducts;
 	private Boolean delivered;
 	private String productName;
-
 	private String email;
 
 	public boolean hasPriceRange() {
@@ -41,6 +40,7 @@ public class OrderSearchCriteria implements Serializable {
 		numberOfProducts = null;
 		delivered = null;
 		productName = null;
+		email = null;
 	}
 
 	public BigDecimal getMinAmount() {
