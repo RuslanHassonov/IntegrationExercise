@@ -1,0 +1,119 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Ubuntu-Regular;
+    src: url('../fonts/ubuntu/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+    font-family: Ubuntu-Bold;
+    src: url('../fonts/ubuntu/Ubuntu-Bold.ttf');
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    background: #555555;
+    font-family: Ubuntu-Regular, sans-serif;
+}
+/*---------------------------------------------*/
+h1{
+    margin: 0px 0px 150px;
+    color: #e5e5e5;
+    font-family: Ubuntu-Regular, sans-serif;
+    padding: 25px;
+    background: #183fd4;
+    background: -webkit-linear-gradient(left, #0f26b2, #0676d4, #05fabc);
+    background: -o-linear-gradient(left, #0f26b2, #0676d4, #05fabc);
+    background: -moz-linear-gradient(left, #0f26b2, #0676d4, #05fabc);
+    background: linear-gradient(left, #0f26b2, #0676d4, #05fabc);
+    position: relative;
+    z-index: 1;
+}
+
+.login-grid{
+    margin: auto;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #cecece;
+
+    -webkit-box-shadow: 4px 2px 13px 1px rgba(0,0,0,0.75);
+}
+
+#login-cell{
+    margin: 20px;
+    padding: 50px;
+}
+
+.login-button {
+    font-family: Ubuntu-Bold, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    border: none;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 160px;
+    height: 42px;
+    border-radius: 21px;
+
+    background: #0fadfa;
+    background: -webkit-linear-gradient(left, #0f26b2, #0676d4, #0fadfa);
+    background: -o-linear-gradient(left, #0f26b2, #0676d4, #0fadfa);
+    background: -moz-linear-gradient(left, #0f26b2, #0676d4, #0fadfa);
+    background: linear-gradient(left, #0f26b2, #0676d4, #0fadfa);
+    position: relative;
+    z-index: 1;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.login-button::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 21px;
+    background-color: #555555;
+    top: 0;
+    left: 0;
+    opacity: 0;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.login-button:hover {
+    background-color: transparent;
+}
+
+.login-button:hover:before {
+    opacity: 1;
+}
+
+

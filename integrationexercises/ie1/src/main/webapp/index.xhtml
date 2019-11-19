@@ -21,19 +21,22 @@
 <h:body>
     <ui:composition template="template.xhtml">
         <ui:define name="content">
+            <h:outputStylesheet name="css/style.css"/>
             <h:form>
-                <h:panelGrid id="grid" columns="3" cellpadding="5" style="text-align: center; border-style: solid; border-width: 1px; margin: auto; padding: 10px">
-                    <p:outputLabel for="username" value="Username:"/>
-                    <p:inputText id="username" required="true" requiredMessage="Username is required" label="Username" value="#{loginBean.username}"/>
-                    <p:message id="msg1" for="username" display="text"/>
+                <h:panelGrid id="grid" columns="3" styleClass="login-grid">
+                        <p:outputLabel for="username" value="Username:"/>
+                        <p:inputText id="username" required="true" requiredMessage="Username is required"
+                                     label="Username" value="#{loginBean.username}"/>
+                        <p:message id="msg1" for="username" display="text"/>
 
-                    <p:outputLabel value="Password:"/>
-                    <p:password id="password" required="true" requiredMessage="Password is required" label="Password" value="#{loginBean.password}"/>
-                    <p:message id="msg2" for="password" display="text"/>
-
+                        <p:outputLabel value="Password:"/>
+                        <p:password id="password" required="true" requiredMessage="Password is required"
+                                    label="Password" value="#{loginBean.password}"/>
+                        <p:message id="msg2" for="password" display="text"/>
                     <p:spacer height="10"/>
 
-                    <p:commandButton value="Login" action="#{loginBean.validateLogin}" update="grid"/>
+                    <p:commandButton value="Login" action="#{loginBean.validateLogin}" update="grid"
+                                     styleClass="login-button"/>
                 </h:panelGrid>
             </h:form>
         </ui:define>

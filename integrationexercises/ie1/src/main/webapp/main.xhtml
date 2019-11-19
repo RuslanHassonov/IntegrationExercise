@@ -22,7 +22,7 @@
 <h:body>
     <ui:composition template="template.xhtml">
         <ui:define name="content">
-            <h:form>
+            <h:form id="form">
 
                 <p:outputLabel value="Search Criteria:"/>
 
@@ -68,12 +68,10 @@
                     <p:row></p:row>
 
                     <p:row>
-                        <p:commandButton value="Clear" actionListener="#{orderSearchCriteria.clear}">
-                            <!--<f:ajax render="minVal nrOfProd prodName maxVal delivered emaulAddr msgMinVal
-                                            msgNrOfProd msgProdName msgMaxVal msgDelivered msgEmailAddr"/>-->
-                            <p:ajax update="gridParent" resetValues="true"/>
+                        <p:commandButton value="Clear" action="#{orderSearchCriteria.clear}" immediate="true" ajax="false">
+                            <p:resetInput target="gridLeft gridRight"/>
                         </p:commandButton>
-                        <p:commandButton value="Search"/>
+                        <p:commandButton value="Search" update="foundRes"/>
                     </p:row>
                 </p:panelGrid>
 
