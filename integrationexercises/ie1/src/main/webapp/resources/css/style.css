@@ -24,29 +24,36 @@ body, html {
     height: 100%;
     background: #555555;
     font-family: Ubuntu-Regular, sans-serif;
+    color: #e5e5e5;
 }
 /*---------------------------------------------*/
 h1{
-    margin: 0px 0px 150px;
+    margin: 0px 0px 27px;
     color: #e5e5e5;
     font-family: Ubuntu-Regular, sans-serif;
     padding: 25px;
     background: #183fd4;
-    background: -webkit-linear-gradient(left, #0f26b2, #0676d4, #05fabc);
-    background: -o-linear-gradient(left, #0f26b2, #0676d4, #05fabc);
-    background: -moz-linear-gradient(left, #0f26b2, #0676d4, #05fabc);
-    background: linear-gradient(left, #0f26b2, #0676d4, #05fabc);
+    background: -webkit-linear-gradient(left, #0f26b2, #0676d4, #03d7fa);
+    background: -o-linear-gradient(left, #0f26b2, #0676d4, #03d7fa);
+    background: -moz-linear-gradient(left, #0f26b2, #0676d4, #03d7fa);
+    background: linear-gradient(left, #0f26b2, #0676d4, #03d7fa);
     position: relative;
     z-index: 1;
 }
 
-.login-grid{
+.login-grid-wrapper{
+    width: 20%;
     margin: auto;
-    padding: 50px;
-    border-radius: 10px;
+    padding: 35px;
+    border-radius: 2px;
+    border: solid 1px #e7e8e9;
     background-color: #cecece;
 
     -webkit-box-shadow: 4px 2px 13px 1px rgba(0,0,0,0.75);
+}
+
+.login-grid-wrapper .login-label{
+    color: black;
 }
 
 #login-cell{
@@ -116,4 +123,6 @@ h1{
     opacity: 1;
 }
 
-
+.table-wrapper {
+    padding: 35px;
+}

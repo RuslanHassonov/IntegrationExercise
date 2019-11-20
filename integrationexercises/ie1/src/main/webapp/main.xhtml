@@ -24,6 +24,7 @@
         <ui:define name="content">
             <h:form id="form">
 
+                <p:panel styleClass="table-wrapper">
                 <p:outputLabel value="Search Criteria:"/>
 
                 <p:separator/>
@@ -38,7 +39,8 @@
                         <p:message id="msgMinVal" for="minVal" display="text"/>
 
                         <p:outputLabel value="# Of Products:"/>
-                        <p:inputText id="nrOfProd" label="Number of Products" value="#{orderSearchCriteria.numberOfProducts}"/>
+                        <p:inputText id="nrOfProd" label="Number of Products"
+                                     value="#{orderSearchCriteria.numberOfProducts}"/>
                         <p:message id="msgNrOfProd" for="nrOfProd" display="text"/>
 
                         <p:outputLabel value="Product Name:"/>
@@ -54,11 +56,13 @@
                         <p:message id="msgMaxVal" for="maxVal" display="text"/>
 
                         <p:outputLabel value="Delivered:"/>
-                        <p:selectBooleanCheckbox id="delivered" label="Delivered" value="#{orderSearchCriteria.delivered}"/>
+                        <p:selectBooleanCheckbox id="delivered" label="Delivered"
+                                                 value="#{orderSearchCriteria.delivered}"/>
                         <p:message id="msgDelivered" for="delivered" display="text"/>
 
                         <p:outputLabel value="Email Address:"/>
-                        <p:inputText id="emailAddr" label="Email Address" value="#{orderSearchCriteria.email}" validatorMessage="Provided email is not correct.">
+                        <p:inputText id="emailAddr" label="Email Address" value="#{orderSearchCriteria.email}"
+                                     validatorMessage="Provided email is not correct.">
                             <f:validateRegex pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"/>
                             <p:ajax update="gridRight" event="blur"/>
                         </p:inputText>
@@ -68,42 +72,52 @@
                     <p:row></p:row>
 
                     <p:row>
-                        <p:commandButton value="Clear" action="#{orderSearchCriteria.clear}" immediate="true" ajax="false">
+                        <p:commandButton value="Clear" action="#{orderSearchCriteria.clear}" immediate="true"
+                                         ajax="false">
                             <p:resetInput target="gridLeft gridRight"/>
                         </p:commandButton>
                         <p:commandButton value="Search" update="foundRes"/>
                     </p:row>
                 </p:panelGrid>
+                </p:panel>
 
-                <p:outputLabel value="Found Results:"/>
-                <p:separator/>
+                <p:panel styleClass="table-wrapper">
+                    <p:outputLabel value="Found Results:"/>
+                    <p:separator/>
 
-                <p:dataTable id="foundRes" var="order" value="#{orderServiceImpl.searchOrders(orderSearchCriteria)}">
-                    <p:column headerText="Order ID">
-                        <h:outputText value="#{order.orderId}"/>
-                    </p:column>
-                    <p:column headerText="Customer ID">
-                        <h:outputText value="#{order.customerId}"/>
-                    </p:column>
-                    <p:column headerText="# of Products">
-                        <h:outputText value="#{order.products}"/>
-                    </p:column>
-                    <p:column headerText="Delivered">
-                        <h:outputText value="#{order.delivered}"/>
-                    </p:column>
-                    <p:column headerText="Delivery Days">
-                        <h:outputText value="#{order.deliveryDays}"/>
-                    </p:column>
-                    <p:column headerText="Total Price">
-                        <h:outputText value="#{order.totalOrderPrice}"/>
-                    </p:column>
-                    <p:column style="width:32px;text-align: center">
-                        <p:commandButton icon="pi pi-search" title="Detail">
-                            <f:setPropertyActionListener value="" target=""/>
-                        </p:commandButton>
-                    </p:column>
-                </p:dataTable>
+                    <p:dataTable id="foundRes" var="order"
+                                 value="#{orderServiceImpl.searchOrders(orderSearchCriteria)}">
+                        <p:column headerText="Order ID">
+                            <h:outputText value="#{order.orderId}"/>
+                        </p:column>
 
+                        <p:column headerText="Customer ID">
+                            <h:outputText value="#{order.customerId}"/>
+                        </p:column>
+
+                        <p:column headerText="# of Products">
+                            <h:outputText value="#{order.products}"/>
+                        </p:column>
+
+                        <p:column headerText="Delivered">
+                            <h:outputText value="#{order.delivered}"/>
+                        </p:column>
+
+                        <p:column headerText="Delivery Days">
+                            <h:outputText value="#{order.deliveryDays}"/>
+                        </p:column>
+
+                        <p:column headerText="Total Price">
+                            <h:outputText value="#{order.totalOrderPrice}"/>
+                        </p:column>
+
+                        <p:column style="width:32px;text-align: center">
+                            <p:commandButton title="Detail">
+                                <f:setPropertyActionListener value="#{order}" target="#{selectionView.selectedOrder}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
                 <br/>
                 <p:spacer height="10"/>
                 <p:commandButton value="Logout" action="#{loginBean.validateLogin}"/>

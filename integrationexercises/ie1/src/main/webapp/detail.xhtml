@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: M999RHV
+  Date: 08/11/2019
+  Time: 11:19
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Main Page</title>
+</h:head>
+
+<h:body>
+    <ui:composition template="template.xhtml">
+        <ui:define name="content">
+            <h:form id="form">
+
+                <p:outputLabel value="Detail:"/>
+
+                <p:separator/>
+                <p:outputLabel value="Order Detail:"/>
+                    <p:panelGrid id="orderDetail" columns="4">
+                        <p:outputLabel value="Order ID:"/>
+                        <p:outputLabel id="lbl_orderDetail" label="Order Detail" value="OID-123456"/>
+
+                        <p:outputLabel value="Customer ID:"/>
+                        <p:outputLabel id="lbl_cstmDetail" label="Customer ID" value="john"/>
+
+                        <p:outputLabel value="# Of Products:"/>
+                        <p:outputLabel id="nrOfProdDetail" label="Number of Products" value="12"/>
+
+                        <p:outputLabel value="Delivered:"/>
+                        <p:outputLabel id="lbl_deliveredDetail" label="Delivered" value="Yes"/>
+
+                        <p:outputLabel value="Delivery Days:"/>
+                        <p:outputLabel id="lbl_deliveryDaysDetail" label="Delivery Days" value="3"/>
+
+                        <p:outputLabel value="Total Price:"/>
+                        <p:outputLabel id="lbl_totalPriceDetail" label="Total Price" value="2700"/>
+                    </p:panelGrid>
+
+                <p:outputLabel value="Product Details:"/>
+                <p:separator/>
+
+                <p:dataTable id="producDetail" var="product" value="">
+                    <p:column headerText="Product ID">
+                    </p:column>
+
+                    <p:column headerText="Product Name">
+                    </p:column>
+
+                    <p:column headerText="Product Description">
+                    </p:column>
+
+                    <p:column headerText="Product Price">
+                    </p:column>
+                </p:dataTable>
+
+                <br/>
+                <p:spacer height="10"/>
+                <p:commandButton value="Logout" action="#{loginBean.validateLogin}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+
+</html>
