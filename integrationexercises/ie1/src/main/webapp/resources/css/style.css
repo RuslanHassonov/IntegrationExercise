@@ -13,52 +13,89 @@
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
-
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
 body, html {
     height: 100%;
     background: #555555;
     font-family: Ubuntu-Regular, sans-serif;
+    font-size: 18px;
     color: #e5e5e5;
 }
+
 /*---------------------------------------------*/
-h1{
+h1 {
     margin: 0px 0px 27px;
     color: #e5e5e5;
     font-family: Ubuntu-Regular, sans-serif;
+    font-size: 37px;
     padding: 25px;
     background: #183fd4;
     background: -webkit-linear-gradient(left, #0f26b2, #0676d4, #03d7fa);
     background: -o-linear-gradient(left, #0f26b2, #0676d4, #03d7fa);
     background: -moz-linear-gradient(left, #0f26b2, #0676d4, #03d7fa);
     background: linear-gradient(left, #0f26b2, #0676d4, #03d7fa);
-    position: relative;
-    z-index: 1;
 }
 
-.login-grid-wrapper{
-    width: 20%;
-    margin: auto;
-    padding: 35px;
-    border-radius: 2px;
-    border: solid 1px #e7e8e9;
-    background-color: #cecece;
-
-    -webkit-box-shadow: 4px 2px 13px 1px rgba(0,0,0,0.75);
+.content-limiter {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.login-grid-wrapper .login-label{
-    color: black;
+.login-form-container {
+    width: 350px;
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    padding: 35px 35px 70px;
+
+    border: solid 1px white;
+    border-radius: 3px;
+    background: #ffffff;
+    background: linear-gradient(to bottom, #ffffff 0%, #f6f6f6 47%, #d1faff 100%);
+    -webkit-box-shadow: 4px 2px 13px 1px rgba(0, 0, 0, 0.75);
 }
 
-#login-cell{
-    margin: 20px;
-    padding: 50px;
+.login-header-wrapper {
+    font-weight: bold;
+    font-size: 30px;
+    color: #333333;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0 0 35px;
+}
+
+.login-input {
+    font-size: 18px;
+    line-height: 1.2;
+    color: #686868;
+    display: block;
+    background: #ebebeb;
+    height: 48px;
+    border-radius: 3px;
+    padding-left: 35px;
+
+    outline: none;
+    border: none;
+
+    text-align: left;
+}
+
+.login-input:focus {
+    border-bottom: solid #03D7FA 2px;
+    /*animation: anim-shadow 0.5s ease-in-out backwards;*/
+}
+
+@keyframes anim-shadow {
+    to {
+        box-shadow: 0px 0px 60px 20px;
+        opacity: 0;
+    }
 }
 
 .login-button {
@@ -78,9 +115,10 @@ h1{
     justify-content: center;
     align-items: center;
     padding: 0 20px;
+    width: 100%;
     min-width: 160px;
     height: 42px;
-    border-radius: 21px;
+    border-radius: 5px;
 
     background: #0fadfa;
     background: -webkit-linear-gradient(left, #0f26b2, #0676d4, #0fadfa);
@@ -103,7 +141,7 @@ h1{
     z-index: -1;
     width: 100%;
     height: 100%;
-    border-radius: 21px;
+    border-radius: 5px;
     background-color: #555555;
     top: 0;
     left: 0;
@@ -126,3 +164,8 @@ h1{
 .table-wrapper {
     padding: 35px;
 }
+
+.error-msg {
+    border-style: none;
+}
+

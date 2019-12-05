@@ -1,48 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Created by IntelliJ IDEA.
-  User: M999RHV
-  Date: 08/11/2019
-  Time: 10:46
--->
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-    <title>Integration Exercise</title>
-</h:head>
-
-<h:body>
-    <ui:composition template="template.xhtml">
-        <ui:define name="content">
-            <h:outputStylesheet name="css/style.css"/>
-            <h:form>
-                <p:panel styleClass="login-grid-wrapper">
-                <h:panelGrid id="grid" columns="3" cellspacing="15">
-                        <p:outputLabel for="username" value="Username:" styleClass="login-label"/>
+<ui:composition template="template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <h:outputStylesheet name="css/style.css"/>
+        <h:form>
+            <p:panel styleClass="content-limiter">
+                <p:panel styleClass="login-form-container">
+                    <p:panel styleClass="login-header-wrapper">LOGIN</p:panel>
+                    <h:panelGrid id="grid" columns="1" cellspacing="15" styleClass="login-grid">
                         <p:inputText id="username" required="true" requiredMessage="Username is required"
-                                     label="Username" value="#{loginBean.username}"/>
-                        <p:message id="msg1" for="username" display="text"/>
+                                     label="Username" value="#{loginBean.username}" placeholder="Username"
+                                     styleClass="login-input"/>
+                        <p:message id="msg1" for="username" display="text" styleClass="error-msg"/>
 
-                        <p:outputLabel value="Password:" styleClass="login-label"/>
                         <p:password id="password" required="true" requiredMessage="Password is required"
-                                    label="Password" value="#{loginBean.password}"/>
-                        <p:message id="msg2" for="password" display="text"/>
-
-
-                </h:panelGrid>
+                                    label="Password" value="#{loginBean.password}" placeholder="Password"
+                                    styleClass="login-input"/>
+                        <p:message id="msg2" for="password" display="text" styleClass="error-msg"/>
+                    </h:panelGrid>
                     <p:commandButton value="Login" action="#{loginBean.validateLogin}" update="grid"
-                                               styleClass="login-button"/>
+                                     styleClass="login-button"/>
                 </p:panel>
-            </h:form>
-        </ui:define>
-    </ui:composition>
-</h:body>
-
-</html>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

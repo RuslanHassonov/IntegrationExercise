@@ -12,6 +12,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+
 >
 
 <h:head>
@@ -20,9 +22,16 @@
 
 <h:body>
     <ui:composition>
-        <p style = "text-align: center; color: #e5e5e5">Copyright © 2019 Leuven, Belgium - All rights reserved. <br/>If used without permission,
+        <p style = "text-align: center; font-size: small; color: #e5e5e5; margin-bottom: 10px">Copyright © 2019 Leuven, Belgium - All rights reserved. <br/>If used without permission,
            your soul will be doomed for all eternity!</p>
     </ui:composition>
+
+    <p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
+        <p:panel name="start">
+            <p:graphicImage name="resources/images/ajax-loader.gif" />
+        </p:panel>
+
+    </p:ajaxStatus>
 </h:body>
 
 </html>

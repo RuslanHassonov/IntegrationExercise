@@ -1,66 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Created by IntelliJ IDEA.
-  User: M999RHV
-  Date: 08/11/2019
-  Time: 11:19
--->
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-    <title>Main Page</title>
-</h:head>
-
-<h:body>
-    <ui:composition template="template.xhtml">
-        <ui:define name="content">
-            <h:form id="form">
-
-                <p:panel styleClass="table-wrapper">
-                <p:outputLabel value="Search Criteria:"/>
+<ui:composition template="template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <h:form id="form">
+            <p:panel styleClass="table-wrapper">
+                <p:outputLabel value="#{loc['ie1.localization.searchCrit']}"/>
 
                 <p:separator/>
 
                 <p:panelGrid id="gridParent" columns="2" styleClass="ui-noborder">
 
                     <p:panelGrid id="gridLeft" columns="3">
-                        <p:outputLabel value="Minimum Value:"/>
-                        <p:inputText id="minVal" label="Minimum Value" value="#{orderSearchCriteria.minAmount}">
+                        <p:outputLabel value="#{loc['ie1.localization.minVal']}"/>
+                        <p:inputText id="minVal" label="Minimum Value" value="#{orderSearchCriteria.minAmount}"
+                                     validatorMessage="Please provide a decimal value">
                             <p:ajax update="gridLeft" event="blur"/>
                         </p:inputText>
                         <p:message id="msgMinVal" for="minVal" display="text"/>
 
-                        <p:outputLabel value="# Of Products:"/>
+                        <p:outputLabel value="#{loc['ie1.localization.nrProd']}"/>
                         <p:inputText id="nrOfProd" label="Number of Products"
                                      value="#{orderSearchCriteria.numberOfProducts}"/>
                         <p:message id="msgNrOfProd" for="nrOfProd" display="text"/>
 
-                        <p:outputLabel value="Product Name:"/>
+                        <p:outputLabel value="#{loc['ie1.localization.nameProd']}"/>
                         <p:inputText id="prodName" label="Product Name" value="#{orderSearchCriteria.productName}"/>
                         <p:message id="msgProdName" for="prodName" display="text"/>
                     </p:panelGrid>
 
                     <p:panelGrid id="gridRight" columns="3">
-                        <p:outputLabel value="Maximum Value:"/>
-                        <p:inputText id="maxVal" label="Maximum Value" value="#{orderSearchCriteria.maxAmount}">
+                        <p:outputLabel value="#{loc['ie1.localization.maxVal']}"/>
+                        <p:inputText id="maxVal" label="Maximum Value" value="#{orderSearchCriteria.maxAmount}"
+                                     validatorMessage="Please provide a decimal value">
                             <p:ajax update="gridRight" event="blur"/>
                         </p:inputText>
                         <p:message id="msgMaxVal" for="maxVal" display="text"/>
 
-                        <p:outputLabel value="Delivered:"/>
+                        <p:outputLabel value="#{loc['ie1.localization.delivered']}"/>
                         <p:selectBooleanCheckbox id="delivered" label="Delivered"
                                                  value="#{orderSearchCriteria.delivered}"/>
                         <p:message id="msgDelivered" for="delivered" display="text"/>
 
-                        <p:outputLabel value="Email Address:"/>
+                        <p:outputLabel value="#{loc['ie1.localization.email']}"/>
                         <p:inputText id="emailAddr" label="Email Address" value="#{orderSearchCriteria.email}"
                                      validatorMessage="Provided email is not correct.">
                             <f:validateRegex pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"/>
@@ -72,59 +55,90 @@
                     <p:row></p:row>
 
                     <p:row>
-                        <p:commandButton value="Clear" action="#{orderSearchCriteria.clear}" immediate="true"
+                        <p:commandButton value="#{loc['ie1.localization.clear']}" action="#{orderSearchCriteria.clear}"
+                                         immediate="true"
                                          ajax="false">
                             <p:resetInput target="gridLeft gridRight"/>
                         </p:commandButton>
-                        <p:commandButton value="Search" update="foundRes"/>
+                        <p:commandButton value="#{loc['ie1.localization.search']}" update="foundRes"/>
                     </p:row>
                 </p:panelGrid>
-                </p:panel>
+            </p:panel>
 
-                <p:panel styleClass="table-wrapper">
-                    <p:outputLabel value="Found Results:"/>
-                    <p:separator/>
+            <p:panel styleClass="table-wrapper">
+                <p:outputLabel value="#{loc['ie1.localization.foundResult']}"/>
+                <p:separator/>
 
-                    <p:dataTable id="foundRes" var="order"
-                                 value="#{orderServiceImpl.searchOrders(orderSearchCriteria)}">
-                        <p:column headerText="Order ID">
-                            <h:outputText value="#{order.orderId}"/>
-                        </p:column>
+                <p:dataTable id="foundRes" var="order"
+                             value="#{orderServiceImpl.searchOrders(orderSearchCriteria)}"
+                             style="text-align: center"
+                             selection="#{selectionView.selectedOrder}">
+                    <p:column headerText="#{loc['ie1.localization.orderId']}">
+                        <h:outputText value="#{order.orderId}"/>
+                    </p:column>
 
-                        <p:column headerText="Customer ID">
-                            <h:outputText value="#{order.customerId}"/>
-                        </p:column>
+                    <p:column headerText="#{loc['ie1.localization.customerId']}">
+                        <h:outputText value="#{order.customerId}"/>
+                    </p:column>
 
-                        <p:column headerText="# of Products">
-                            <h:outputText value="#{order.products}"/>
-                        </p:column>
+                    <p:column headerText="#{loc['ie1.localization.nrProd']}">
+                        <h:outputText value="#{order.products.size()}"/>
+                    </p:column>
 
-                        <p:column headerText="Delivered">
-                            <h:outputText value="#{order.delivered}"/>
-                        </p:column>
+                    <p:column headerText="#{loc['ie1.localization.delivered']}">
+                        <h:outputText value="#{order.delivered}"/>
+                    </p:column>
 
-                        <p:column headerText="Delivery Days">
-                            <h:outputText value="#{order.deliveryDays}"/>
-                        </p:column>
+                    <p:column headerText="#{loc['ie1.localization.delvDays']}">
+                        <h:outputText value="#{order.deliveryDays}"/>
+                    </p:column>
 
-                        <p:column headerText="Total Price">
-                            <h:outputText value="#{order.totalOrderPrice}"/>
-                        </p:column>
+                    <p:column headerText="#{loc['ie1.localization.totPrice']}">
+                        <h:outputText value="#{order.totalOrderPrice}"/>
+                    </p:column>
 
-                        <p:column style="width:32px;text-align: center">
-                            <p:commandButton title="Detail">
-                                <f:setPropertyActionListener value="#{order}" target="#{selectionView.selectedOrder}"/>
-                            </p:commandButton>
-                        </p:column>
-                    </p:dataTable>
-                </p:panel>
-                <br/>
-                <p:spacer height="10"/>
-                <p:commandButton value="Logout" action="#{loginBean.validateLogin}"/>
+                    <p:column style="width:auto;text-align: center">
+                        <p:commandButton title="Detail" action="#{loginBean.displayDetails}" update="@form"
+                                         process="@this" value="Detail">
+                            <f:setPropertyActionListener value="#{order}" target="#{selectionView.selectedOrder}"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+            <br/>
 
-            </h:form>
-        </ui:define>
-    </ui:composition>
-</h:body>
+            <!--<p:dialog id="dialog" header="Order Details" widgetVar="orderDialog" modal="true" showEffect="fade"
+                      hideEffect="fade"
+                      resizable="false" style="background: #e5e5e5" closable="true" width="750">
+                <p:outputPanel id="orderDetail" style="text-align: center; color: black">
+                    <p:panelGrid columns="4">
+                        <p:outputLabel value="Order ID:"/>
+                        <p:outputLabel value="#{selectionView.selectedOrder.id}"/>
 
-</html>
+                        <p:outputLabel value="Customer ID:"/>
+                        <p:outputLabel value="#{selectionView.selectedOrder.customerId}"/>
+
+                        <p:outputLabel value="# Of Products:"/>
+                        <p:outputLabel value="#{selectionView.selectedOrder.products.size()}"/>
+
+                        <p:outputLabel value="Delivered:"/>
+                        <p:outputLabel value="#{selectionView.selectedOrder.delivered}"/>
+
+                        <p:outputLabel value="Delivery Days:"/>
+                        <p:outputLabel value="#{selectionView.selectedOrder.deliveryDays}"/>
+
+                        <p:outputLabel value="Total Price:"/>
+                        <p:outputLabel value="#{selectionView.selectedOrder.totalOrderPrice}"/>
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog> -->
+        </h:form>
+
+        <h:form id="logoutForm">
+            <p:panel>
+                <p:commandButton value="Logout" action="#{loginBean.logOut}" process="@this"/>
+            </p:panel>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

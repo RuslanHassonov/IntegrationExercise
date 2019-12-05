@@ -1,28 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-			  version="2.2">
-	
-	<navigation-rule>
-		<display-name>index.xhtml</display-name>
-		<from-view-id>/index.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{loginBean.validateLogin}</from-action>
-			<from-outcome>success</from-outcome>
-			<to-view-id>/main.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+              version="2.2">
 
-	<navigation-rule>
-		<display-name>main.xhtml</display-name>
-		<from-view-id>/main.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{loginBean.validateLogin}</from-action>
-			<from-outcome>failure</from-outcome>
-			<to-view-id>/index.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+    <application>
+        <resource-bundle>
+            <base-name>localization</base-name>
+            <var>loc</var>
+        </resource-bundle>
 
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>nl</supported-locale>
+        </locale-config>
+    </application>
+
+    <navigation-rule>
+        <display-name>index.xhtml</display-name>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.validateLogin}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/main.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <display-name>main.xhtml</display-name>
+        <from-view-id>/main.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.displayDetails}</from-action>
+            <from-outcome>to_detail</from-outcome>
+            <to-view-id>/detail.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <display-name>main.xhtml</display-name>
+        <from-view-id>/main.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.logOut}</from-action>
+            <from-outcome>to_login</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <display-name>detail.xhtml</display-name>
+        <from-view-id>/detail.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.logOut}</from-action>
+            <from-outcome>to_login</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 
 </faces-config>
